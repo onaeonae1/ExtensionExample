@@ -27,7 +27,7 @@ function askForName(){
 function loadName(){
   const currentUser = localStorage.getItem(USER_LS);
   console.log(currentUser);
-  if(currentUser==="Unknown"){
+  if(currentUser==="null"){
     askForName();
     //she is not
   }
