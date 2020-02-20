@@ -46,7 +46,8 @@ function deleteToDo(event){
    //console.log(cleanToDos);
 }
 
-function handleSubmit(){
+function handleToDoSubmit(){
+    console.log("todo");
     event.preventDefault();
     const currentValue = toDoInput.value;
     paintToDo(currentValue);
@@ -62,13 +63,10 @@ function loadToDos(){
            paintToDo(toDo.text);
        });
     }
-    else{
-
-    }
 }
 
 function init(){
     loadToDos();
-    toDoForm.addEventListener("submit", handleSubmit);
+    toDoForm.addEventListener("submit", handleToDoSubmit);
 }
 init();
