@@ -50,14 +50,17 @@ function handleToDoSubmit(){
     console.log("todo");
     event.preventDefault();
     const currentValue = toDoInput.value;
-    paintToDo(currentValue);
-    toDoInput.value = ""; //지우기
+    if(currentValue !==""){
+        console.log(currentValue);
+        paintToDo(currentValue);
+        toDoInput.value = ""; //지우기
+    }
 }
 
 function loadToDos(){
     const loadedtoDos = localStorage.getItem(TODOS_LS);
     //string으로 얻어온다는 것!
-    if(loadedtoDos !== null){
+    if(loadedtoDos !== null){ //공백 입력 예외 처리
         const parsedtoDos = JSON.parse(loadedtoDos);
        parsedtoDos.forEach(function(toDo){
            paintToDo(toDo.text);
