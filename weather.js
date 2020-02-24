@@ -1,7 +1,11 @@
 const COORDS = 'coords';
 const API_KEY = "3ccf53163b8ca88eadc8eb78cd3c83a1";
 const weather = document.querySelector(".js-weather");
-
+function updateLocation(){ //위치 업데이트
+    askForCoords();
+    loadCoords();
+    console.log("위치 업데이트 완료");
+}
 function getWeather(lat, lng){
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`
@@ -13,6 +17,11 @@ function getWeather(lat, lng){
         const temp = json.main.temp;
         const place = json.name;
         weather.innerText = `${temp} °C @${place}`;
+
+        const delbtn = document.createElement("button");
+        delbtn.innerText = "날짜 재설정";
+        delbtn.addEventListener("click",updateLocation);
+        weather.appendChild(delbtn);
         console.log(json);
     });
 }
